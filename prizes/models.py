@@ -40,6 +40,12 @@ class Project(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
 
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        project = cls.objects.filter(title__icontains=search_term)
+        return project
+
+
     # Methods
     def save_project(self):
         self.save()
