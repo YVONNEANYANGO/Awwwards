@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to = 'images/')
+    profile_pic = models.ImageField(upload_to = 'profiles/')
     username = models.CharField(max_length = 100)
     bio = models.CharField(max_length = 500)
     Project = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -34,7 +34,7 @@ class Profile(models.Model):
 class Project(models.Model):
     User = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length = 100)
-    landing_page = models.ImageField(upload_to = 'images/')
+    landing_page = models.ImageField(upload_to = 'projects/')
     description = models.CharField(max_length = 500)
     link = models.CharField(max_length = 200)
     pub_date = models.DateTimeField(auto_now_add=True)

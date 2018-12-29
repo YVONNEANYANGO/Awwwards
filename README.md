@@ -23,10 +23,10 @@ The user is able to:
 
 ## Behaviour Driven Development(BDD)
 
- Expected Behaviour                        | Output                            |  Results                                 |
--------------------------------------------|-----------------------------------|------------------------------------------|
- To view posted projects and their details | Click on a particular project     | Details of the project will be displayed |
- To post a project                         | Add projects through user profile | Projects will be posted                  |To search for projects                    | Enter most rated project          | Most rated project will be displayed     |
+ Expected Behaviour                        | Output                            |  Results                                 
+-------------------------------------------|-----------------------------------|------------------------------------------
+ To view posted projects and their details | Click on a particular project     | Details of the project will be displayed 
+ To post a project                         | Add projects through user profile | Projects will be posted                  To search for projects                    | Enter most rated project          | Most rated project will be displayed     
  
  
 ## Terminologies Used
@@ -49,8 +49,9 @@ The user is able to:
 ## How to Access the Application
 
 Run this command in your terminal
-$ git clone https://github.com/YVONNEANYANGO/Awwards.git
-$ cd Gallery-Webpage
+
+* $ git clone https://github.com/YVONNEANYANGO/Awwards.git
+* $ cd Gallery-Webpage
 
 ## Testing the Application
 

@@ -6,6 +6,15 @@ from django.http import HttpResponse
 def welcome(request):
     return render(request, 'home.html')
 
+
+def project(request,project_id):
+    try:
+        project = Project.objects.get(id = project_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request, "project.html", {"project":project})
+    
+
 def search_results(request):
 
     if 'project' in request.GET and request.GET["project"]:
