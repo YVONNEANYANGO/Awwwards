@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-    profile = models.ImageField(upload_to = 'images/')
+    profile_pic = models.ImageField(upload_to = 'images/')
     bio = models.CharField(max_length = 500)
     projects = models.ForeignKey(User, on_delete=models.CASCADE)
     contacts = models.CharField(max_length = 20)
