@@ -11,3 +11,9 @@ class ProfileTestClass(TestCase):
     # Testing instance
     def test_instance(self):
         self.assertTrue(isinstance(self.cate,Profile))
+
+    # Testing Save Method
+    def test_save_method(self):
+        self.cate.save_profile()
+        profiles = Profile.objects.all()
+        self.assertTrue(len(editors) > 0)

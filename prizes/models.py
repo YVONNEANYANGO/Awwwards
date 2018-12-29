@@ -4,12 +4,17 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'images/')
+    username = models.CharField(max_length = 100)
     bio = models.CharField(max_length = 500)
-    projects = models.ForeignKey(User, on_delete=models.CASCADE)
+    Project = models.ForeignKey(User, on_delete=models.CASCADE)
     contacts = models.CharField(max_length = 20)
 
 
     # Methods
+
+    def __str__(self):
+        return self.username
+
     def save_profile(self):
         self.save()
 
@@ -19,8 +24,7 @@ class Profile(models.Model):
     def update_profile(self):
         self.update()
 
-    def __str__(self):
-        return self.User
+    
 
     @classmethod
     def get_profile(cls, profile_id):
@@ -34,6 +38,7 @@ class Project(models.Model):
     description = models.CharField(max_length = 500)
     link = models.CharField(max_length = 200)
     pub_date = models.DateTimeField(auto_now_add=True)
+
 
     # Methods
     def save_project(self):
