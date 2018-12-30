@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-
+from django.http import HttpResponse, Http404,HttpResponseRedirect
 
 # Create your views here.
 def welcome(request):
@@ -9,9 +9,14 @@ def welcome(request):
      if request.method == 'POST':
         form = NewsLetterForm(request.POST)
         if form.is_valid():
-            print('valid')
-        else:
-            form = NewsLetterForm()
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+            HttpResponseRedirect('project')
+    else:
+        form = NewsLetterForm()
+            
         return render(request, 'project.html', {"prizes":prizes,"letterForm":form})
     
 
