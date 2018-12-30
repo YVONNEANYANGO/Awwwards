@@ -3,8 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.http import  Http404,HttpResponseRedirect
 from .email import send_welcome_email
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+
 def welcome(request):
     return render(request, 'project.html')
     
@@ -26,6 +29,7 @@ def welcome(request):
         return render(request, 'project.html', {"prizes":prizes,"letterForm":form})
     
 
+@login_required(login_url='/accounts/login/')
 def project(request,project_id):
     try:
         project = Project.objects.get(id = project_id)
