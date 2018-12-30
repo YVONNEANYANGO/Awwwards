@@ -1,11 +1,19 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 def welcome(request):
-    return render(request, 'home.html')
-
+    
+     if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            print('valid')
+        else:
+            form = NewsLetterForm()
+        return render(request, 'project.html', {"prizes":prizes,"letterForm":form})
+    
 
 def project(request,project_id):
     try:
@@ -13,7 +21,11 @@ def project(request,project_id):
     except DoesNotExist:
         raise Http404()
     return render(request, "project.html", {"project":project})
-    
+
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'profile.html', {'profile_user': username})
+
 
 def search_results(request):
 

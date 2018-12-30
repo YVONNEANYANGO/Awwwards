@@ -1,8 +1,23 @@
 {%extends 'base.html'%}
+{% load static %}
+{{block.super}}
+
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
+
+    <form action="{%url 'newsToday'%}" method="post">
+        {%csrf_token%}
+    
+        {% bootstrap_form letterForm layout='inline' %}
+        <input type="submit" value="Subscribe">
+    </form>
+
+
+    <div class="row" style="background-image: -o-repeating-linear-gradient(https://images.pexels.com/photos/1704002/pexels-photo-1704002.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)">
+        <h1>Welcome to Awwards Website!!!</h1>
+    </div>
 
     <div class="row">
         <img src="{{project.project_image.url}}" class="img-responsive" alt="">
