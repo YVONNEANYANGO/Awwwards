@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
+
+
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'profiles/')
     username = models.CharField(max_length = 100)
@@ -59,6 +64,3 @@ class Project(models.Model):
     def __str__(self):
         return self.Project
 
-class NewsLetterRecipients(models.Model):
-    name = models.CharField(max_length = 30)
-    email = models.EmailField()

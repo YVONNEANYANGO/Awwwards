@@ -1,0 +1,4 @@
+Hello {{name}}
+
+Welcome to The Awwwards Website...we will be updating you on the latest prize giving events..
+we hope you will enjoy our services
