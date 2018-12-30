@@ -5,17 +5,20 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 
 # Create your views here.
 def welcome(request):
+    return render(request, 'project.html')
     
-     if request.method == 'POST':
+    if request.method == 'POST':
         form = NewsLetterForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
+
             recipient = NewsLetterRecipients(name = name,email =email)
             recipient.save()
+            
             HttpResponseRedirect('project')
-    else:
-        form = NewsLetterForm()
+        else:
+            form = NewsLetterForm()
             
         return render(request, 'project.html', {"prizes":prizes,"letterForm":form})
     
