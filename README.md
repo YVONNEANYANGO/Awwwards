@@ -4,7 +4,7 @@
 
 ## Brief Description
 
-Prize-Giving Website allow users to post
+Prize-Giving Website allow users to post their projects and also view and review other people's projects
 
  ## Image Categories Include:
 
