@@ -84,18 +84,17 @@ WSGI_APPLICATION = 'prize.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # development
 if config('MODE')=="dev":
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('awwards'),
-        'USER' : config('moringaschool'),
-        'PASSWORD' :config('valleryyt'),
-        'HOST': config('DB_HOST'),
-        'PORT': '',
-
-    }
-}
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+       }
+       
+   }
 # production
 else:
    DATABASES = {
