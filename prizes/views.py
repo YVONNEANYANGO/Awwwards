@@ -4,12 +4,16 @@ from django.contrib.auth.models import User
 from django.http import  Http404,HttpResponseRedirect
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
+from .models import Project
 
 
 # Create your views here.
-
+@login_required(login_url='/accounts/login/')
 def welcome(request):
-    return render(request, 'project.html')
+    projects = Project.objects.all()
+    print (projects)
+
+    return render(request, 'project.html', {"projects":projects})
     
     if request.method == 'POST':
         form = NewsLetterForm(request.POST)
@@ -26,7 +30,7 @@ def welcome(request):
         else:
             form = NewsLetterForm()
             
-        return render(request, 'project.html', {"prizes":prizes,"letterForm":form})
+        return render(request, 'project.html', {"projects":projects, "letterForm":form})
     
 
 @login_required(login_url='/accounts/login/')
@@ -37,9 +41,12 @@ def project(request,project_id):
         raise Http404()
     return render(request, "project.html", {"project":project})
 
-def profile(request, username):
-    user = get_object_or_404(User, username=username)
-    return render(request, 'profile.html', {'profile_user': username})
+def profile(request,profile_id):
+    
+    profile= Profile.get_profile(profile_id)
+
+    return render(request, 'profile.html' , {"profile":profile })
+
 
 
 def search_results(request):

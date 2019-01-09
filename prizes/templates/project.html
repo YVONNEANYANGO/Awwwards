@@ -2,12 +2,8 @@
 {% load bootstrap3 %}
 {% load static %}
 
-
-
 {% block content %}
 {{block.super}}
-
-
 
 <div class="container-fluid">
     <div class="row" style="background-image: -o-repeating-linear-gradient(https://images.pexels.com/photos/1704002/pexels-photo-1704002.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)">
@@ -21,22 +17,28 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi_I1Vmgs8JPjf-hOab-q5tNO4Inpe3rSyKEJEAtSY6bC5TvuMpA" alt="">
         </div>
     </div>
-
-    <div class="row">
-        <img src="{{project.project_image.url}}" class="img-responsive" alt="">
+    {% for project in projects %}
+    <div class="well">
+    <div class="row" style="text-align: center">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <img src="{{project.landing_page.url}}"  class="img-responsive" alt="" height="150" width="200">
+        </div>
+        <div class="col-md-4">
+            <a class="text-center" href="{{ project_id }}">{{project.title}}</a>
+        </div>
     </div>
-
-    <div class="row">
-        <h1 class="text-center">{{project.title}}</h1>
     </div>
-
-    <div class="row">
-        <p>{{project.post}}</p>
-    </div>
-
-    <div class="row">
-        <p>Posted {{project.pub_date|timesince}} by {{project.profile.username}}</p>
-    </div>
+        <div class="row" style="text-align: center">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <p>{{project.description}}</p>
+                <p><a href='{{project.link}}'><button type="button" class="btn btn-primary">VIEW SITE</button></a></p>
+            </div>
+            <div class="col-md-4">
+            <p>Posted {{project.pub_date|timesince}}  {{project.profile.username}}ago</p>
+            </div>
+        </div>
 
 </div>
 
@@ -50,14 +52,30 @@
         {% endfor %}
     </form>
 </div>
+{% endfor %}
 
 <!-- {% for field in form %}
 {% bootstrap_field field %}
 {% endfor %} -->
+<!-- 
+{% for prizes_item in prizes %}
 
+<div class="row">
+    displaying prizes projects
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <h2 class="text-center"> {{ prizes_item.title }} </h2>
+    </div>
+
+    Display news Article images 
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img src="{{prizes_item.project_image.url}}" class="img-responsive" alt="Image">
+    </div>
+
+</div>
+
+
+
+{% endfor %} -->
 {% endblock %}
 
-{% block scripts %}
-{{block.super}}
-    <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
-{% endblock %}
+

@@ -11,8 +11,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark primary-color" style="background-color: black">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'project' %}">Insta-Pictures App</a>
-                <li><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                <a class="navbar-brand" href="{% url 'project' %}">Awwwards App</a>
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
             </div>
             <!-- Adding a search form  -->
             <div class="col-sm-4 col-md-4 navbar-right">
@@ -40,7 +40,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{%url 'welcome'%}">Home</a>
+                                <a href="{%url 'project'%}">Home</a>
                             </li>
                             <li>
                                 <a href="/accounts/password/change">Change Password</a>

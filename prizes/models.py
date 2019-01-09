@@ -44,6 +44,8 @@ class Project(models.Model):
     link = models.CharField(max_length = 200)
     pub_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
 
     @classmethod
     def search_by_title(cls,search_term):
@@ -61,6 +63,5 @@ class Project(models.Model):
     def update_project():
         self.update()
 
-    def __str__(self):
-        return self.Project
+   
 
